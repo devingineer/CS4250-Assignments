@@ -1,13 +1,15 @@
 import os
-import spacy
+from nltk.stem import PorterStemmer
 
-from Clean import CleanText
-
-#change model depending on langauge?
-nlp = spacy.load('en_core_web_sm')
+from Tokenizer import Tokenize
+stemmer = PorterStemmer()
 
 #make sure to update the target repo later
-directory = r'.\CS4250-Assignment1\Code\CodePart2\TargetRepoExample' 
+directory = os.path.join(os.getcwd(), r'Code\CodePart2\TargetRepoExample')
+
+outputDir = "output"
+os.makedirs(outputDir, exist_ok=True)
+
 
 for filename in os.listdir(directory):
     file_path = os.path.join(directory, filename)
@@ -15,29 +17,15 @@ for filename in os.listdir(directory):
     # Check if it's an HTML file
     if file_path.endswith('.html'):
         with open(file_path, 'r', encoding='utf-8') as handle:
-                #clean text 
-                cleanedText = CleanText(handle.read())
+                #Tokenize
+                tokenizedWords = Tokenize(handle.read())
 
-                #tokenize them using the model above
-                doc = nlp(cleanedText)
-                for token in doc:
-                    print(token.text + "-->" + token.lemma_)
+                #stem
+                with open(f"Output/OutputPart2/{filename}.StemmedOutput.txt", "w", encoding="utf-8") as file:
+                    for word in tokenizedWords: 
+                        output = stemmer.stem(word)
+                        file.write(f"{output}\n")
+                        # print(f"{word} ---> {output}")
+                
 
-
-# #uncomment below to test
-# text = """
-#             <html>
-# <body>
-
-# <h1>My First Heading</h1>
-# <p>My first paragraph.</p>
-
-# </body>
-# </html>
-#             """
-# print(CleanText(text))
-
-# test = nlp("eat eating ate eaten")
-# for token in test:
-#     print(token.text + "-->" + token.lemma_)
 
