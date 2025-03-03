@@ -28,7 +28,7 @@ frequency = dict(sorted(words.items(),
 freq = []
 i = 0
 for element in frequency.values():
-    if i < 100:
+    if i < 50:
         print(list(frequency.keys())[i], 
             "freq : ", list(frequency.values())[i], 
             " r: ", i+1, 
