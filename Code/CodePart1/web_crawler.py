@@ -13,7 +13,14 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import os
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
+
+import requests
+from bs4 import BeautifulSoup
+import csv
+import os
+from urllib.parse import urljoin, urlparse
+from lingua import Language, LanguageDetectorBuilder
 
 # Create a repository directory
 directory = "repository"
@@ -24,10 +31,50 @@ url = "https://www.cpp.edu"
 start_url = "https://www.cpp.edu/"
 headers = {"User-Agent": "Mozilla/5.0"}
 report_file_name = "report.csv"
+is_domain = "cpp.edu"
 
+# French url
+# url = "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal"
+# start_url = "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal/"
+# headers = {"User-Agent": "Mozilla/5.0"}
+# report_file_name = "report.csv"
+# is_domain = "fr.wikipedia.org/"
+
+# # Spanish Url
+# url = "https://www.pokemon.com/es"
+# start_url = "https://www.pokemon.com/es/"
+# headers = {"User-Agent": "Mozilla/5.0"}
+# report_file_name = "report.csv"
+
+supported_langs = {
+    Language.ENGLISH: 'en',
+    Language.SPANISH: 'es',
+    Language.FRENCH: 'fr'
+}
+
+detector = LanguageDetectorBuilder.from_languages(
+    *supported_langs.keys()).build()  # use the keys as ids of the language
+
+
+def check_lang(text):
+    try:
+        detected_lang = detector.detect_language_of(text)
+        if detected_lang in supported_langs:
+            return supported_langs[detected_lang]  # return the selected language code (en, es, fr)
+        else:
+            return None
+    except Exception:
+        return None
 
 # Send an HTTP GET request
 response = requests.get(url, headers=headers)
+
+# check the language of the url
+detected_lang = check_lang(response.text)
+if check_lang(response.text):
+    print(f"{detected_lang} is supported for ({url})")
+else:
+    print(f"Language is not supported for ({url})")
 
 # Create a BeautifulSoup object which will search through response text
 soup = BeautifulSoup(response.text, "html.parser")
@@ -47,7 +94,9 @@ links = []
 for a in a_tags:
     href = a["href"]
     absolute_url = urljoin(start_url, href)  # Convert relative to absolute
-    links.append(absolute_url)
+    # if domain_restriction(absolute_url, is_domain):
+    #     links.append(absolute_url)
+    # links.append(absolute_url)
     print(absolute_url)  # Debugging output
 
 # Create the report file and add the first page url and # of links to it
@@ -58,6 +107,11 @@ with open(report_file_name, "w", newline="") as file:
 # Loop through the link list and add 49 more web pages to the repository and report
 for i in range(1, 50):
     url = links[i]
+
+    # restrict links from going outside domain
+    # if not domain_restriction(url, is_domain):
+    #     print(f"Skipping {url}, not allowed within domain")
+    #     continue
 
     # Send an HTTP GET request
     response = requests.get(url, headers=headers)
@@ -79,3 +133,5 @@ for i in range(1, 50):
     with open(report_file_name, "a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow([url, len(new_links)])
+else:
+    print(f"Link Limit Reached! {len(links)}")
