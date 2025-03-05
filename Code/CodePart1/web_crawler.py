@@ -14,12 +14,6 @@ from bs4 import BeautifulSoup
 import csv
 import os
 from urllib.parse import urljoin, urlparse
-
-import requests
-from bs4 import BeautifulSoup
-import csv
-import os
-from urllib.parse import urljoin, urlparse
 from lingua import Language, LanguageDetectorBuilder
 
 # Create a repository directory
@@ -66,6 +60,16 @@ def check_lang(text):
     except Exception:
         return None
 
+# Function to check if the domain of the URL matches the allowed domain
+def domain_restriction(url, allowed_domain):
+    parsed_url = urlparse(url)
+    parsed_url = parsed_url.netloc
+    # Remove everything up to and including the first dot
+    # This way subdomains in the domain will not be restricted
+    if '.' in parsed_url:
+        parsed_url = parsed_url.split('.', 1)[-1]  # Get the part after the first dot
+    return parsed_url == allowed_domain
+
 # Send an HTTP GET request
 response = requests.get(url, headers=headers)
 
@@ -80,7 +84,7 @@ else:
 soup = BeautifulSoup(response.text, "html.parser")
 
 # Create a file path into the repository folder
-file_path = os.path.join(directory, "0.txt")
+file_path = os.path.join(directory, "0.html")
 
 # Create a text file with response content in the repository folder
 with open(f"{file_path}", "w") as file:
@@ -94,10 +98,10 @@ links = []
 for a in a_tags:
     href = a["href"]
     absolute_url = urljoin(start_url, href)  # Convert relative to absolute
-    # if domain_restriction(absolute_url, is_domain):
-    #     links.append(absolute_url)
-    # links.append(absolute_url)
-    print(absolute_url)  # Debugging output
+    #If the link contains the domain restriction, add it to the links list
+    if domain_restriction(absolute_url, is_domain):
+        links.append(absolute_url)
+        print(absolute_url)  # Debugging output
 
 # Create the report file and add the first page url and # of links to it
 with open(report_file_name, "w", newline="") as file:
@@ -108,11 +112,6 @@ with open(report_file_name, "w", newline="") as file:
 for i in range(1, 50):
     url = links[i]
 
-    # restrict links from going outside domain
-    # if not domain_restriction(url, is_domain):
-    #     print(f"Skipping {url}, not allowed within domain")
-    #     continue
-
     # Send an HTTP GET request
     response = requests.get(url, headers=headers)
 
@@ -120,7 +119,7 @@ for i in range(1, 50):
     soup = BeautifulSoup(response.text, "html.parser")
 
     # Create a file path into the repository folder
-    file_path = os.path.join(directory, f"{i}.txt")
+    file_path = os.path.join(directory, f"{i}.html")
 
     # Create a text file with response content in the repository folder
     with open(f"{file_path}", "w", encoding="utf-8") as file:
