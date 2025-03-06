@@ -1,21 +1,23 @@
 import matplotlib.pyplot as plt
 import sys
+import os
 
-fileName = sys.argv[1]
+directory = sys.argv[1]
 docNum = sys.argv[2]
 
 lines = 0
 words = {}
 frequency = {}
 
-with open(fileName, 'r') as file:
-    for line in file:
-        line = line.strip()
-        lines += 1
-        if line in words.keys():
-            words[line] += 1
-        else:
-            words[line] = 1
+for fileName in os.listdir(directory):
+    with open(directory + '\\' + fileName, 'r') as file:
+        for line in file:
+            line = line.strip()
+            lines += 1
+            if line in words.keys():
+                words[line] += 1
+            else:
+                words[line] = 1
 
 frequency = dict(sorted(words.items(),
                         key = lambda x: x[1],
@@ -45,14 +47,14 @@ plt.plot(Zipf, label = 'Zipf', ls = ':')
 
 Prob = [None]
 Prob += [freq[x] / lines for x in range(len(freq))]
-plt.plot(Prob, label = fileName, color = 'blue')
+plt.plot(Prob, label = "Crawl" + str(docNum), color = 'blue')
 
 plt.xscale('log')
 plt.yscale('log')
 
 plt.xlabel('Rank')
 plt.ylabel('Probability')
-plt.title("Zipf's law for " + fileName)
+plt.title("Zipf's law for " + "Crawl" + str(docNum))
 plt.legend()
 
 plt.show()
