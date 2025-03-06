@@ -1,7 +1,7 @@
 # This is an intro web crawler which will crawl CPP home page and download the home page html text and 50 outlinks text
 # This program will also generate a report.csv file with the URL and # of outlinks and a repository of all of the page text files
 # Features to Add:
-#   1. Crawler needs to crawl through different seed URL's
+#   1. Crawler needs to crawl through different seed URL"s
 #       ex.) Currently, the only seed URL is Cal Poly Pomona website https://cpp.edu/
 #   2. Crawler needs to add domain restrictions
 #       ex.) No domain restrictions in this program
@@ -16,20 +16,19 @@ import os
 from urllib.parse import urljoin, urlparse
 from lingua import Language, LanguageDetectorBuilder
 
-
-# url, starting urls, and allowed domain of 3 different domains
+# URL, Starting URLs, and Allowed Domain of 3 different domains
 seed_urls = [
     {
-     "url": "https://www.cpp.edu",
-     "start_url": "https://www.cpp.edu/",
-     "allowed_domain": "cpp.edu",
-     "report_file_name": "report1.csv"
-     },
+        "url": "https://www.cpp.edu",
+        "start_url": "https://www.cpp.edu/",
+        "allowed_domain": "cpp.edu",
+        "report_file_name": "report1.csv"
+    },
     {
-       "url": "https://www.lefigaro.fr",
-       "start_url": "https://www.lefigaro.fr/",
-       "allowed_domain": "lefigaro.fr",
-       "report_file_name": "report2.csv"
+        "url": "https://www.lefigaro.fr",
+        "start_url": "https://www.lefigaro.fr/",
+        "allowed_domain": "lefigaro.fr",
+        "report_file_name": "report2.csv"
     },
     {
         "url": "https://www.cervantesvirtual.com",
@@ -39,11 +38,11 @@ seed_urls = [
     }
 ]
 
-# supported languages for the 3 different domains (eng, spanish, french)
+# Supported languages for the 3 different domains (english, spanish, french)
 supported_langs = {
-    Language.ENGLISH: 'en',
-    Language.SPANISH: 'es',
-    Language.FRENCH: 'fr'
+    Language.ENGLISH: "en",
+    Language.SPANISH: "es",
+    Language.FRENCH: "fr"
 }
 
 detector = LanguageDetectorBuilder.from_languages(
@@ -66,8 +65,8 @@ def domain_restriction(url, allowed_domain):
     parsed_url = parsed_url.netloc
     # Remove everything up to and including the first dot
     # This way subdomains in the domain will not be restricted
-    if '.' in parsed_url:
-        parsed_url = parsed_url.split('.', 1)[-1]  # Get the part after the first dot
+    if "." in parsed_url:
+        parsed_url = parsed_url.split(".", 1)[-1]  # Get the part after the first dot
     return parsed_url == allowed_domain
 
 
@@ -80,9 +79,8 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
     report_file_name = seed_url_info["report_file_name"]
 
     # Create a repository directory
-    directory = "repository"
+    directory = "Repository"
     os.makedirs(directory, exist_ok=True)
-
 
     # Send an HTTP GET request
     try:
@@ -121,7 +119,7 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
         if domain_restriction(absolute_url, allowed_domain):
             links.append(absolute_url)
             print(absolute_url)  # Debugging output
-    #
+
     # Create the report file and add the first page url and # of links to it
     with open(report_file_name, "w", newline="") as file:
         writer = csv.writer(file)
