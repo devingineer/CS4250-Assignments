@@ -80,7 +80,7 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
     report_file_name = seed_url_info["report_file_name"]
 
     # Create a repository directory
-    directory = "repository"
+    directory = "Output/OutputPart1/repository"
     os.makedirs(directory, exist_ok=True)
 
 
@@ -152,10 +152,6 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
             print(f"error accessing {url}: {e}")
 
     print(f"Crawling complete. Crawled {max_links + 1} pages")  # uses +1 to include seed url
-    if max_links < 49:  # check if max_links is over 50
-        print(f"Crawling complete. Found {max_links + 1} pages")
-    else:
-        print(f"Crawling complete. Processed 50 pages.")
 
 def main():
     for seed_url_info in seed_urls:  # iterating through the seed url info to get the correct info for run_web_crawler
