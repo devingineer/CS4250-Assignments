@@ -15,6 +15,7 @@ import csv
 import os
 from urllib.parse import urljoin, urlparse
 from lingua import Language, LanguageDetectorBuilder
+from itertools import islice
 
 # URL, Starting URLs, and Allowed Domain of 3 different domains
 seed_urls = [
@@ -111,13 +112,13 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
     a_tags = soup.find_all("a", href=True)
 
     # # Extract href links from the a_tags list
-    links = []
+    links = set()
     for a in a_tags:
         href = a["href"]
         absolute_url = urljoin(start_url, href)  # Convert relative to absolute
         # If the link contains the domain restriction, add it to the links list
         if domain_restriction(absolute_url, allowed_domain):
-            links.append(absolute_url)
+            links.add(absolute_url)
             print(absolute_url)  # Debugging output
 
     # Create the report file and add the first page url and # of links to it
@@ -128,9 +129,8 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
     max_links = min(len(links), 49)  # 50 total pages including seed url
     print(f"found {len(links)} links")
 
-    for i in range(max_links):
+    for url in list(islice(links, max_links)): 
         try:
-            url = links[i]
             # Send an HTTP GET request
             response = requests.get(url, headers=headers)
             # Create a BeautifulSoup object which will search through response text
