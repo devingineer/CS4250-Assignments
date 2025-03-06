@@ -1,31 +1,28 @@
 import os
-from nltk.stem import PorterStemmer
+from Tokenizer import tokenize_document
+from Stemmer import stem_tokens
 
-from Tokenizer import Tokenize
-stemmer = PorterStemmer()
+# Update this path to the actual folder containing HTML files
+directory = os.path.join(os.getcwd(), "Code", "CodePart2", "ExamplePage")
 
-#make sure to update the target repo later
-directory = os.path.join(os.getcwd(), r'Code\CodePart2\TargetRepoExample')
-
-outputDir = "output"
-os.makedirs(outputDir, exist_ok=True)
-
+# Ensure output directories exist
+output_dir = os.path.join(os.getcwd(), "Code", "CodePart2", "Output")
+os.makedirs(output_dir, exist_ok=True)
 
 for filename in os.listdir(directory):
     file_path = os.path.join(directory, filename)
     
-    # Check if it's an HTML file
-    if file_path.endswith('.html'):
-        with open(file_path, 'r', encoding='utf-8') as handle:
-                #Tokenize
-                tokenizedWords = Tokenize(handle.read())
+    # Process only HTML files
+    if file_path.endswith(".html"):
+         with open(file_path, "r", encoding="utf-8") as handle:
+                # Tokenize
+                tokenized_words = tokenize_document(handle.read())
 
-                #stem
-                with open(f"Output/OutputPart2/{filename}.StemmedOutput.txt", "w", encoding="utf-8") as file:
-                    for word in tokenizedWords: 
-                        output = stemmer.stem(word)
-                        file.write(f"{output}\n")
-                        # print(f"{word} ---> {output}")
-                
+                # Stemming
+                stemmed_words = stem_tokens(tokenized_words) # Apply stemming to the full list
 
-
+                # Save output
+                base_filename = os.path.splitext(filename)[0] # Remove extension from filename
+                output_path = os.path.join(output_dir, f"{base_filename}-StemmedOutput.txt")
+                with open(output_path, "w", encoding="utf-8") as file:
+                    file.write("\n".join(stemmed_words))  # Write all words at once
