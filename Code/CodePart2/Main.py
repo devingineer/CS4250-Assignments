@@ -41,5 +41,6 @@ for repo in os.listdir(input_dir):
                 output_path = os.path.join(output_repo_path, f"{base_filename}-StemmedOutput.txt")
                 with open(output_path, "w", encoding="utf-8") as file:
                     file.write("\n".join(stemmed_words))  # Write all stemmed words to the file
+    print("Tokenization and stemming completed for:", repo)
 
 print("Tokenization and stemming completed. Output saved to:", output_dir)
