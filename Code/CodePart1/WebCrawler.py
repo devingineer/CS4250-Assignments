@@ -22,19 +22,22 @@ seed_urls = [
         "url": "https://www.cpp.edu",
         "start_url": "https://www.cpp.edu/",
         "allowed_domain": "cpp.edu",
-        "report_file_name": "report1.csv"
+        "report_file_name": "Report1.csv",
+        "repository": "CPP-Repository"
     },
     {
         "url": "https://www.lefigaro.fr",
         "start_url": "https://www.lefigaro.fr/",
         "allowed_domain": "lefigaro.fr",
-        "report_file_name": "report2.csv"
+        "report_file_name": "Report2.csv",
+        "repository": "LeFigaro-Repository"
     },
     {
         "url": "https://www.cervantesvirtual.com",
         "start_url": "https://www.cervantesvirtual.com/",
         "allowed_domain": "cervantesvirtual.com",
-        "report_file_name": "report3.csv"
+        "report_file_name": "Report3.csv",
+        "repository": "CervantesVirtual-Repository"
     }
 ]
 
@@ -69,7 +72,6 @@ def domain_restriction(url, allowed_domain):
         parsed_url = parsed_url.split(".", 1)[-1]  # Get the part after the first dot
     return parsed_url == allowed_domain
 
-
 headers = {"User-Agent": "Mozilla/5.0"}
 # main web crawler function
 def run_web_crawler(seed_url_info):  # we will get the info from the seed url list in the main program.
@@ -77,10 +79,16 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
     start_url = seed_url_info["start_url"]
     allowed_domain = seed_url_info["allowed_domain"]
     report_file_name = seed_url_info["report_file_name"]
+    repository = seed_url_info["repository"]
 
-    # Create a repository directory
-    directory = "Repository"
+    # Create a repository directory for the specific seed URL
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    directory = os.path.join(script_directory, "Repository", repository)
     os.makedirs(directory, exist_ok=True)
+
+    # Create the Output directory if it doesn't exist
+    output_directory = os.path.join(os.getcwd(), "Output")
+    os.makedirs(output_directory, exist_ok=True)
 
     # Send an HTTP GET request
     try:
@@ -110,7 +118,7 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
     # Find all of the a_tags in web page which contain links
     a_tags = soup.find_all("a", href=True)
 
-    # # Extract href links from the a_tags list
+    # Extract href links from the a_tags list
     links = []
     for a in a_tags:
         href = a["href"]
@@ -121,7 +129,8 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
             print(absolute_url)  # Debugging output
 
     # Create the report file and add the first page url and # of links to it
-    with open(report_file_name, "w", newline="") as file:
+    report_path = os.path.join(output_directory, report_file_name)
+    with open(report_path, "w", newline="") as file:
         writer = csv.writer(file)
         writer.writerow([url, len(links)])
 
@@ -143,7 +152,7 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
             # Find all links in web page
             new_links = soup.find_all("a", href=True)
             # Append to the report file and add the url and links of the current web page
-            with open(report_file_name, "a", newline="") as file:
+            with open(report_path, "a", newline="") as file:
                 writer = csv.writer(file)
                 writer.writerow([url, len(new_links)])
         except Exception as e:
