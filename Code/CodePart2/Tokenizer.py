@@ -1,12 +1,19 @@
+import re
+import nltk
 from bs4 import BeautifulSoup
 from nltk.tokenize import word_tokenize
-import re
 
-def Tokenize(text): 
-    soup = BeautifulSoup(text, 'html.parser')
-    text = soup.get_text()
-    text = text.replace("\n", " ").replace("\t", " ").strip()
-    text = re.sub("\s\s+" , " ", text)
-    text = re.sub(r'[^A-Za-z0-9 @$&% ]+', '', text)
+nltk.download("punkt")
+nltk.download("punkt_tab")
+
+def tokenize_document(document):
+    soup = BeautifulSoup(document, "html.parser")
+    for script in soup(["script", "style"]):  
+        script.extract() # Remove JavaScript and CSS
+    text = soup.get_text()  # Extract plain text
+    
+    # Keep only alphanumeric sequences
     words = word_tokenize(text)
-    return words
+    tokens = [word.lower() for word in words if re.match(r"^[a-zA-Z0-9]+$", word)]
+
+    return tokens
