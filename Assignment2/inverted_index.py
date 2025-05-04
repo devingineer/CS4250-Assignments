@@ -40,10 +40,23 @@ def build_inverted_index_for_repo(repo_name="Repository"):
 
 if __name__ == "__main__":
     index = build_inverted_index_for_repo("Repository")
+
+    # Convert defaultdict to regular dict so it can be serialized
+    def convert_to_dict(d):
+        if isinstance(d, defaultdict):
+            return {k: convert_to_dict(v) for k, v in d.items()}
+        else:
+            return d
+
+    index_dict = convert_to_dict(index)
+
+    # Path to save JSON in same directory as this script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(script_dir, "inverted_index.json")
     
     # Save the index to a JSON file
-    with open("inverted_index.json", "w", encoding="utf-8") as f:
-        json.dump(index, f, indent=2)
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(index_dict, f, indent=2)
 
     # Print a small sample of the index
     for word, occurrences in list(index.items())[:5]:
