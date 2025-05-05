@@ -47,17 +47,25 @@ def bm25_search():
         results = bm25_score(query, index, idf, doc_lengths, avg_dl)
     return render_template("BM25.html", title="BM25 Search", query=query, results=results)
 
-@app.route("/api/boolean", methods=["POST"])
+@app.route("/api/boolean", methods=["GET", "POST"])
 def boolean_api():
-    data = request.get_json()
-    query = data.get("query", "")
+    if request.method == "POST":
+        data = request.get_json()
+        query = data.get("query", "")
+    else:
+        query = request.args.get("query", "")
+    
     results = boolean_and_search(index, query)
     return jsonify(results)
 
-@app.route("/api/bm25", methods=["POST"])
+@app.route("/api/bm25", methods=["GET", "POST"])
 def bm25_api():
-    data = request.get_json()
-    query = data.get("query", "")
+    if request.method == "POST":
+        data = request.get_json()
+        query = data.get("query", "")
+    else:
+        query = request.args.get("query", "")
+    
     doc_lengths, avg_dl, total_num_docs = build_doc_stats(index)
     idf = compute_idf(index, total_num_docs)
     results = bm25_score(query, index, idf, doc_lengths, avg_dl)
