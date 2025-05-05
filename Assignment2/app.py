@@ -6,7 +6,7 @@ from boolean_retrieval import boolean_and_search
 from BM25 import build_doc_stats, compute_idf, bm25_score
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 """
 This function loads the inverted index from a JSON file.
