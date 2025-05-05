@@ -7,7 +7,8 @@ export default function BooleanSearch() {
   const [results, setResults] = useState([]);
 
   const handleSearch = async () => {
-    const res = await axios.post("http://localhost:5000/api/boolean", { query });
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    const res = await axios.post(`${API_URL}/boolean`, { query });
     setResults(res.data);
   };
 
