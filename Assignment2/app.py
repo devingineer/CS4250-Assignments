@@ -47,6 +47,14 @@ def bm25_search():
         results = bm25_score(query, index, idf, doc_lengths, avg_dl)
     return render_template("BM25.html", title="BM25 Search", query=query, results=results)
 
+@app.route("/api")
+def api_root():
+    return jsonify({"message": "Welcome to the Retrieval Search API!"})
+
+@app.route("/api/index", methods=["GET"])
+def inverted_index_api():
+    return jsonify(index)
+
 @app.route("/api/boolean", methods=["GET", "POST"])
 def boolean_api():
     if request.method == "POST":
