@@ -45,3 +45,19 @@ def compute_idf(index, total_docs):
         df = len(postings)
         idf[word] = math.log((total_docs - df + 0.5) / (df + 0.5) + 1)
     return idf
+
+
+def bm25_score(query, index, idf, doc_lengths, avg_dl):
+    query_terms = re.findall(r'\w+', query.lower())
+    scores = defaultdict(float)
+
+    for term in query_terms:
+        if term not in index:
+            continue
+        for doc, positions in index[term].items():
+            tf = len(positions)
+            dl = doc_lengths[doc]
+            score = idf[term] * ((tf * (k1 + 1)) / (tf + k1 * (1 - b + b * (dl / avg_dl))))
+            scores[doc] += score
+
+    return sorted(scores.items(), key=lambda x: x[1], reverse=True)
