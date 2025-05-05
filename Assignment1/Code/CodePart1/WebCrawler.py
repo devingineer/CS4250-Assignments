@@ -138,6 +138,13 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
     max_links = min(len(links), 49)  # 50 total pages including seed url
     print(f"found {len(links)} links")
 
+    # Also write the links in another orignalUrls.txt to save it
+    links_file_path = os.path.join(directory, "originalUrls.txt")
+    with open(links_file_path, "w", encoding="utf-8") as links_file:
+        links_file.write(f"{start_url}\n")  # Write the seed URL first
+        for link in links[:max_links]:
+            links_file.write(f"{link}\n")
+
     for i in range(max_links):
         try:
             url = links[i]
@@ -166,8 +173,9 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
         print(f"Crawling complete. Processed 50 pages.")
 
 def main():
-    for seed_url_info in seed_urls:  # iterating through the seed url info to get the correct info for run_web_crawler
-        run_web_crawler(seed_url_info)
+    # for seed_url_info in seed_urls:  # iterating through the seed url info to get the correct info for run_web_crawler
+    #     run_web_crawler(seed_url_info)
+    run_web_crawler(seed_urls[0])
     print("Web Crawling Complete.")
 
 if __name__ == "__main__":
