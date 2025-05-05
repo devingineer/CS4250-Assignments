@@ -2,6 +2,9 @@ import json
 import os
 import re
 
+"""
+This function loads the inverted index from a JSON file.
+"""
 def load_index(json_filename="inverted_index.json"):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     json_path = os.path.join(script_dir, json_filename)
@@ -11,6 +14,9 @@ def load_index(json_filename="inverted_index.json"):
     return index
 
 
+"""
+This function performs a simple boolean AND search on the inverted index.
+"""
 def boolean_and_search(index, query):
     query_words = re.findall(r'\w+', query.lower())
 
@@ -34,6 +40,9 @@ def boolean_and_search(index, query):
     return sorted(result_docs)
 
 
+"""
+Main function to load the index and handle user input.
+"""
 if __name__ == "__main__":
     index = load_index()
 
