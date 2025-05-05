@@ -32,3 +32,18 @@ def boolean_and_search(index, query):
             return []  # If any word isn't in the index, no doc will match all
 
     return sorted(result_docs)
+
+
+if __name__ == "__main__":
+    index = load_index()
+
+    while True:
+        query = input("Please enter your query (or type 'exit' to quit): ").strip()
+        if query.lower() == "exit":
+            break
+
+        results = boolean_and_search(index, query)
+        if results:
+            print("Relevant results are:", ", ".join(results))
+        else:
+            print("No documents matched your query.")
