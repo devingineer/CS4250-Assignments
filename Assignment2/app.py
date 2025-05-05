@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import os, json, math, re
 from collections import defaultdict
 from boolean_retrieval import boolean_and_search
 from BM25 import build_doc_stats, compute_idf, bm25_score
 
 app = Flask(__name__)
+CORS(app)
 
 """
 This function loads the inverted index from a JSON file.
@@ -44,6 +46,22 @@ def bm25_search():
         idf = compute_idf(index, total_num_docs)
         results = bm25_score(query, index, idf, doc_lengths, avg_dl)
     return render_template("BM25.html", title="BM25 Search", query=query, results=results)
+
+@app.route("/api/boolean", methods=["POST"])
+def boolean_api():
+    data = request.get_json()
+    query = data.get("query", "")
+    results = boolean_and_search(index, query)
+    return jsonify(results)
+
+@app.route("/api/bm25", methods=["POST"])
+def bm25_api():
+    data = request.get_json()
+    query = data.get("query", "")
+    doc_lengths, avg_dl, total_num_docs = build_doc_stats(index)
+    idf = compute_idf(index, total_num_docs)
+    results = bm25_score(query, index, idf, doc_lengths, avg_dl)
+    return jsonify(results)
 
 if __name__ == "__main__":
     app.run(debug=True)
