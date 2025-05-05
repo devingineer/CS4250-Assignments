@@ -1,0 +1,20 @@
+{% extends "Nav.html" %}
+{% block content %}
+    <h1>Search HTML Docs</h1>
+    <h2>BM25 Retrieval Search</h2>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Type your query..." value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <h3>Top Results:</h3>
+        <ul>
+            {% for doc, score in results %}
+                <li>{{ doc }} (Score: {{ "%.4f"|format(score) }})</li>
+            {% endfor %}
+        </ul>
+    {% elif query %}
+        <p>No documents matched your query.</p>
+    {% endif %}
+{% endblock %}
