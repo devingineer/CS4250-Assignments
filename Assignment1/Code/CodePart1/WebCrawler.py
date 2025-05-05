@@ -139,18 +139,6 @@ def run_web_crawler(seed_url_info):  # we will get the info from the seed url li
     max_links = min(len(links), 49)  # 50 total pages including seed url
     print(f"found {len(links)} links")
 
-    #Get the parent directory of the current repository directory
-    parent_dir = os.path.dirname(directory)
-
-    #Sanitize the URL to make a valid filename (remove protocol and replace invalid characters)
-    safe_url = url.replace("https://", "").replace("http://", "").replace("/", "_").replace(":", "_")
-
-    links_file_path = os.path.join(parent_dir, f"URLSstartingFrom_{safe_url}.txt")
-    with open(links_file_path, "w", encoding="utf-8") as links_file:
-        links_file.write(f"{start_url}\n")  # Write the seed URL first
-        for link in links[:max_links]:
-            links_file.write(f"{link}\n")
-
     for i in range(max_links):
         try:
             url = links[i]
