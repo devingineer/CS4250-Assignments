@@ -47,6 +47,9 @@ def compute_idf(index, total_docs):
     return idf
 
 
+"""
+This function computes the BM25 score for a given query against the inverted index.
+"""
 def bm25_score(query, index, idf, doc_lengths, avg_dl):
     query_terms = re.findall(r'\w+', query.lower())
     scores = defaultdict(float)
@@ -61,3 +64,24 @@ def bm25_score(query, index, idf, doc_lengths, avg_dl):
             scores[doc] += score
 
     return sorted(scores.items(), key=lambda x: x[1], reverse=True)
+
+
+"""
+This function loads the inverted index, builds document statistics, computes IDF, and processes user queries.
+"""
+if __name__ == "__main__":
+    index = load_index()
+    doc_lengths, avg_dl, total_docs = build_doc_stats(index)
+    idf = compute_idf(index, total_docs)
+
+    while True:
+        query = input("Please enter your query (or 'exit' to quit): ").strip()
+        if query.lower() == 'exit':
+            break
+        results = bm25_score(query, index, idf, doc_lengths, avg_dl)
+        if results:
+            print("Top results:")
+            for doc, score in results[:10]:
+                print(f"{doc}: {score:.4f}")
+        else:
+            print("No results found.")
