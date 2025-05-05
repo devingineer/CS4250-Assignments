@@ -71,12 +71,12 @@ This function loads the inverted index, builds document statistics, computes IDF
 """
 if __name__ == "__main__":
     index = load_index()
-    doc_lengths, avg_dl, total_docs = build_doc_stats(index)
-    idf = compute_idf(index, total_docs)
+    doc_lengths, avg_dl, total_num_docs = build_doc_stats(index)
+    idf = compute_idf(index, total_num_docs)
 
     while True:
-        query = input("Please enter your query (or 'exit' to quit): ").strip()
-        if query.lower() == 'exit':
+        query = input("Please enter your query (or type 'exit' to quit): ").strip()
+        if query.lower() == "exit":
             break
         results = bm25_score(query, index, idf, doc_lengths, avg_dl)
         if results:
@@ -84,4 +84,4 @@ if __name__ == "__main__":
             for doc, score in results[:10]:
                 print(f"{doc}: {score:.4f}")
         else:
-            print("No results found.")
+            print("No documents matched your query.")
