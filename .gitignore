@@ -8,6 +8,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.DS_Store
+/Assignment1/.DS_Store
+/Assignment2/.DS_Store
 
 node_modules
 dist

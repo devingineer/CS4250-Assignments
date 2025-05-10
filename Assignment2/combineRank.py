@@ -3,7 +3,6 @@ import BM25
 import csv
 from pageRank import build_link_graph
 
-
 def combine_scores(query):
     pagerank_scores = {}
     try:
@@ -54,6 +53,7 @@ def combine_scores(query):
 
     sorted_results = sorted(combined_scores.items(), key=lambda x:x[1], reverse=True)
     return sorted_results
+
 
 if __name__ == "__main__":
     while(True):
