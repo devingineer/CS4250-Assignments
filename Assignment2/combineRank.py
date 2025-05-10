@@ -6,14 +6,14 @@ from pageRank import build_link_graph
 def combine_scores(query):
     pagerank_scores = {}
     try:
-        with open("../Output/report2.csv", "r", newline='', encoding="utf-8") as csvfile:
+        with open("Output\PageRankScoreForOnlyCrawledLinks.csv", "r", newline='', encoding="utf-8") as csvfile:
             reader = csv.reader(csvfile)
             next(reader)
             for page, score in reader:
                 pagerank_scores[page] = float(score)
     except FileNotFoundError:
         print("pagerank not found, calulating pagerank")
-        link_graph, url_map = build_link_graph("Repository")
+        link_graph, url_map = build_link_graph("Assignment2/Repository")
         G = nx.DiGraph()
 
         for source, targets, in link_graph.items():
@@ -31,7 +31,7 @@ def combine_scores(query):
 
     url_map = {}
     try:
-        with open("FrenchOutput.txt", "r") as f:
+        with open("Assignment2/FrenchOutput.txt", "r") as f:
             for i, line in enumerate(f):
                 url = line.strip()
                 filename = f"{i}"
@@ -52,7 +52,8 @@ def combine_scores(query):
             combined_scores[doc_id] = bm25_score
 
     sorted_results = sorted(combined_scores.items(), key=lambda x:x[1], reverse=True)
-    return sorted_results
+    bm25_results = sorted(bm25_dict.items(), key=lambda x:x[1], reverse=True)
+    return sorted_results, bm25_results
 
 
 if __name__ == "__main__":
@@ -60,11 +61,22 @@ if __name__ == "__main__":
         query = input("Please enter query or exit to leave program: ").strip()
         if query.lower() == "exit":
             break
-        results = combine_scores(query)
+        combined_results, bm25_results = combine_scores(query)
 
-        if results:
-            print("results: ")
-            for doc, score in results:
-                print(f"{doc}: {score:}")
+        print(combined_results.__len__(), bm25_results.__len__())
+
+        #Top 100 from combined results
+        if combined_results:
+            print("Top 100 combined results:")
+            for doc, score in combined_results[:100]:
+                print(f"{doc}: {score}")
         else:
-            print("no mathcing docs")
+            print("No matching docs in combined results")
+
+        #Top 100 from BM25 results
+        if bm25_results:
+            print("\nTop 100 BM25 combined results:")
+            for doc, score in bm25_results[:100]:
+                print(f"{doc}: {score}")
+        else:
+            print("No matching docs in BM25 results")
