@@ -41,14 +41,6 @@ for source, targets in link_graph.items():
 
 pagerank_scores = nx.pagerank(G, alpha=1) # Alpha to 1 means no surfer model
 
-# Write scores to report2.csv
-# with open("Output/PageRankScoreForAnyLink.csv", "w", newline='', encoding="utf-8") as csvfile:
-#     writer = csv.writer(csvfile)
-#     writer.writerow(["Page", "PageRank"])
-#     for page, score in sorted(pagerank_scores.items(), key=lambda x: x[1], reverse=True):
-#         writer.writerow([page, score])
-#         print(f"{page}, {score}")
-
 with open("Output/PageRankScoreForOnlyCrawledLinks.csv", "w", newline='', encoding="utf-8") as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(["Page", "PageRank"])
