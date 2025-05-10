@@ -41,11 +41,11 @@ def combine_bm25_with_pagerank(bm25_results, pagerank_scores, url_map):
     combined = []
     for doc_id, bm25_score in bm25_results:
         doc_key = doc_id.replace(".html", "")
-        url = url_map.get(doc_key)
+        url = url_map.get(doc_key, "N/A")
         pr_score = pagerank_scores.get(url, 0.0)
         combined_score = bm25_score * pr_score
-        combined.append((doc_id, combined_score))
-    return sorted(combined, key=lambda x: x[1], reverse=True)
+        combined.append((doc_id, url, combined_score))
+    return sorted(combined, key=lambda x: x[2], reverse=True)
 
 
 if __name__ == "__main__":
@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
         if final_results:
             print("Top results (BM25 x PageRank):")
-            for doc_id, score in final_results[:10]:
-                print(f"{doc_id} ({url_map.get(doc_id, 'N/A')}): {score:.6f}")
+            for doc_id, url, score in final_results[:10]:
+                print(f"{doc_id} ({url}): {score:.6f}")
         else:
             print("No documents matched your query.")

@@ -4,6 +4,7 @@ import os, json, math, re
 from collections import defaultdict
 from boolean_retrieval import boolean_and_search
 from BM25 import build_doc_stats, compute_idf, bm25_score
+from combined_rank import load_url_map, load_pagerank_scores, combine_bm25_with_pagerank
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -78,6 +79,28 @@ def bm25_api():
     idf = compute_idf(index, total_num_docs)
     results = bm25_score(query, index, idf, doc_lengths, avg_dl)
     return jsonify(results)
+
+@app.route("/api/combined-rank", methods=["GET", "POST"])
+def combined_rank_api():
+    if request.method == "POST":
+        data = request.get_json()
+        query = data.get("query", "")
+    else:
+        query = request.args.get("query", "")
+
+    doc_lengths, avg_dl, total_docs = build_doc_stats(index)
+    idf = compute_idf(index, total_docs)
+    bm25_results = bm25_score(query, index, idf, doc_lengths, avg_dl)
+
+    url_map = load_url_map()
+    pagerank_scores = load_pagerank_scores()
+    combined_results = combine_bm25_with_pagerank(bm25_results, pagerank_scores, url_map)
+
+    return jsonify([
+        {"doc_id": doc_id, "url": url, "score": score}
+        for doc_id, url, score in combined_results
+    ])
+
 
 if __name__ == "__main__":
     app.run(debug=True)
