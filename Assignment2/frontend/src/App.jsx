@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import BooleanSearch from "./pages/BooleanSearch";
 import BM25Search from "./pages/BM25Search";
 import CombinedRank from "./pages/CombinedRank";
+import PageRankTop100 from "./pages/PageRankTop100";
 import Navbar from "./components/Navbar";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/boolean" element={<BooleanSearch />} />
         <Route path="/bm25" element={<BM25Search />} />
         <Route path="/combined-rank" element={<CombinedRank />} />
+        <Route path="/top-pagerank" element={<PageRankTop100 />} />
       </Routes>
     </Router>
   );
