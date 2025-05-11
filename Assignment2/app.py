@@ -101,6 +101,11 @@ def combined_rank_api():
         for doc_id, url, score in combined_results
     ])
 
+@app.route("/api/pagerank-top100", methods=["GET"])
+def get_pagerank_top100():
+    with open("Output/pagerank-top100.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run(debug=True)

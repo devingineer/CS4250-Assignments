@@ -1,0 +1,402 @@
+[
+  {
+    "url": "https://www.lefigaro.fr",
+    "score": 0.0003138607392514886
+  },
+  {
+    "url": "https://mentions-legales.lefigaro.fr/page/cgu",
+    "score": 0.000279625351208684
+  },
+  {
+    "url": "https://www.lefigaro.fr/nice",
+    "score": 0.0002737965724364232
+  },
+  {
+    "url": "https://www.lefigaro.fr/bordeaux",
+    "score": 0.0002737965724364232
+  },
+  {
+    "url": "https://www.lefigaro.fr/marseille",
+    "score": 0.0002737965724364232
+  },
+  {
+    "url": "https://www.lefigaro.fr/lyon",
+    "score": 0.0002737965724364232
+  },
+  {
+    "url": "https://www.lefigaro.fr/nantes",
+    "score": 0.0002737965724364232
+  },
+  {
+    "url": "https://moncompte.lefigaro.fr/",
+    "score": 0.00027338861653539273
+  },
+  {
+    "url": "https://client.lefigaro.fr/WebloggiaLeFigaro/espaceclient/accedernewsletters",
+    "score": 0.00026887540795044384
+  },
+  {
+    "url": "https://moncompte.lefigaro.fr/mes-abonnements",
+    "score": 0.0002621009954413832
+  },
+  {
+    "url": "https://mentions-legales.lefigaro.fr/le-figaro/info-cookies-lefigaro",
+    "score": 0.00025817796734128656
+  },
+  {
+    "url": "https://mentions-legales.lefigaro.fr/le-figaro/info-cookies-utiq",
+    "score": 0.0002580358122029876
+  },
+  {
+    "url": "https://moncompte.lefigaro.fr/decouvrez-les-newsletters/",
+    "score": 0.0002576278563019571
+  },
+  {
+    "url": "https://abonnement.lefigaro.fr/demande-resiliation/le-figaro?redirect_uri=__uri__",
+    "score": 0.00025654572253024847
+  },
+  {
+    "url": "https://abonnement.lefigaro.fr/lefigaro?app=Figaro&source=footer&redirect_uri=__uri__",
+    "score": 0.000256137766629218
+  },
+  {
+    "url": "https://podcasts.lefigaro.fr/",
+    "score": 0.0002560950830651551
+  },
+  {
+    "url": "https://faq.lefigaro.fr/hc/fr?utm_source=faq&utm_medium=internal&utm_campaign=footer",
+    "score": 0.0002500981982303947
+  },
+  {
+    "url": "https://mentions-legales.lefigaro.fr/page/charte-de-participation",
+    "score": 0.00025007256159349876
+  },
+  {
+    "url": "https://mentions-legales.lefigaro.fr/page/politique-de-confidentialite",
+    "score": 0.00025007256159349876
+  },
+  {
+    "url": "https://www.lefigaro.fr/carnetdujour",
+    "score": 0.000248686618849334
+  },
+  {
+    "url": "https://video.lefigaro.fr/",
+    "score": 0.00024670719925155155
+  },
+  {
+    "url": "https://mentions-legales.lefigaro.fr/page/mentions-legales",
+    "score": 0.0002466337860714088
+  },
+  {
+    "url": "https://articles.lefigaro.fr/",
+    "score": 0.00024395743715425731
+  },
+  {
+    "url": "https://kiosque.lefigaro.fr/le-figaro",
+    "score": 0.00024215905086383678
+  },
+  {
+    "url": "https://jeux.lefigaro.fr/",
+    "score": 0.00024215905086383678
+  },
+  {
+    "url": "https://www.lefigaro.fr/sports/matches-en-direct",
+    "score": 0.00024207459398484457
+  },
+  {
+    "url": "https://applications-mobiles.lefigaro.fr/",
+    "score": 0.00024104271427740354
+  },
+  {
+    "url": "https://tvmag.lefigaro.fr/programme-tv/ce_soir_la_tv.html",
+    "score": 0.00024104271427740354
+  },
+  {
+    "url": "https://boutique.lefigaro.fr/?redirect_uri=__uri__",
+    "score": 0.00024104271427740354
+  },
+  {
+    "url": "https://www.lefigaro.fr/plusdefigaro",
+    "score": 0.00024104271427740354
+  },
+  {
+    "url": "https://photo.lefigaro.fr/",
+    "score": 0.00024063475837637305
+  },
+  {
+    "url": "https://boutique.lefigaro.fr/rayon/4-abonnement?ga_source=footer_figaro&app=Figaro&source=footer",
+    "score": 0.00024063475837637305
+  },
+  {
+    "url": "https://moncompte.lefigaro.fr/aide-et-contact",
+    "score": 0.00018722079321661616
+  },
+  {
+    "url": "https://www.lefigaro.fr/faits-divers",
+    "score": 0.00018612221860663523
+  },
+  {
+    "url": "https://www.lefigaro.fr/lefigaromagazine",
+    "score": 0.0001854804702256894
+  },
+  {
+    "url": "https://lesvoyagesf.lefigaro.fr",
+    "score": 0.00018535946144513513
+  },
+  {
+    "url": "https://www.lefigaro.fr/style",
+    "score": 0.000184926505758256
+  },
+  {
+    "url": "https://www.lefigaro.fr/voyages",
+    "score": 0.000184926505758256
+  },
+  {
+    "url": "https://www.lefigaro.fr/lifestyle",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/maison-et-jardin",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/culture",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/international",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/dossier/les-questions-du-jour-du-figaro",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/vox",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/economie",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/langue-francaise",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://tvmag.lefigaro.fr/programme-tv",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://tvmag.lefigaro.fr",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/histoire",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/dossier/fig-data-infographies-datavisualisation",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/actualite-france",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/sciences",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/secteur/high-tech",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/politique",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://www.lefigaro.fr/automobile",
+    "score": 0.00018389893046638926
+  },
+  {
+    "url": "https://moncompte.lefigaro.fr/decouvrez-les-newsletters",
+    "score": 0.00018378971840337592
+  },
+  {
+    "url": "https://leparticulier.lefigaro.fr",
+    "score": 0.00018378971840337592
+  },
+  {
+    "url": "https://boutique.lefigaro.fr",
+    "score": 0.00018278259387995602
+  },
+  {
+    "url": "https://kiosque.lefigaro.fr/catalog/le-figaro-magazine",
+    "score": 0.00018278259387995602
+  },
+  {
+    "url": "https://www.lefigaro.fr/sports",
+    "score": 0.00018278259387995602
+  },
+  {
+    "url": "https://podcasts.lefigaro.fr",
+    "score": 0.00018278259387995602
+  },
+  {
+    "url": "https://kiosque.lefigaro.fr/catalog/tv-magazine",
+    "score": 0.00018278259387995602
+  },
+  {
+    "url": "https://kiosque.lefigaro.fr/catalog/le-figaro",
+    "score": 0.00018278259387995602
+  },
+  {
+    "url": "https://kiosque.lefigaro.fr/catalog/madame-figaro",
+    "score": 0.00018278259387995602
+  },
+  {
+    "url": "https://moncompte.lefigaro.fr/mes-newsletters",
+    "score": 0.00018274765407719006
+  },
+  {
+    "url": "https://moncompte.lefigaro.fr/mes-commentaires",
+    "score": 0.000182289444111892
+  },
+  {
+    "url": "https://abonnement.lefigaro.fr/lefigaro?app=Figaro&source=header&redirect_uri=__uri__",
+    "score": 0.00018125756440445103
+  },
+  {
+    "url": "https://bourse.lefigaro.fr",
+    "score": 0.000178942826177644
+  },
+  {
+    "url": "https://sante.lefigaro.fr",
+    "score": 0.000178942826177644
+  },
+  {
+    "url": "http://evene.lefigaro.fr",
+    "score": 0.00017885406488307753
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/la-selection-du-figaro-live/66c3ddae-8ea9-11ea-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://video.lefigaro.fr",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/en",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/livres",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://avis-vin.lefigaro.fr",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/la-semaine-du-figaro-lyon/a0c25eec-bdf6-4f31-a472-f98404120e81",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://carnetdujour.lefigaro.fr",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/l-alerte-info/8df76986-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/f-art-de-vivre",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://guide-achat.lefigaro.fr",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/emploi-entreprise/8df8a121-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/golf/8df8361a-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/la-semaine-du-figaro-nantes/7e5f6bc7-6e44-44f2-bbd5-e06f57255380",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/l-actualite-de-l-immobilier/8df97589-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/voyage/8dfa6a0b-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/meteo",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/bons-plans",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/les-titres-du-matin/8df77dd9-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/programmes-tv/8df804c1-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/la-semaine-du-figaro-nice/6788d892-7bef-4a99-8efd-f6d371c33ffe",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/art-de-vivre/8df99a68-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://golf.lefigaro.fr/",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/la-semaine-du-figaro-marseille/be3167cc-b7df-42aa-a8f6-3ef698ac9fd7",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/la-quotidienne-sport/4dac539f-6b50-11e9-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/l-heure-h/7501b164-7d01-11eb-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/la-lettre-d-info-culture-et-loisirs/8df871d4-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/bourse-placements/8df7b1e1-2c2b-11e8-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/newsletters/toute-l-actualite-du-vin/4c5ac736-e0c0-11ec-a7df-a0369fee8a80",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://madame.lefigaro.fr",
+    "score": 0.00017782648959121077
+  },
+  {
+    "url": "https://www.lefigaro.fr/dossier/les-classements-du-figaro",
+    "score": 0.00017782648959121077
+  }
+]
